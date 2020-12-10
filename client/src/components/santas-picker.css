@@ -1,0 +1,62 @@
+.santas-form {
+  width: 100%;
+  min-height: 100%;
+  background: rgba(240, 153, 154, 0.65);
+  display: flex;
+  flex-flow: column;
+}
+
+.santas-form > * {
+  margin: 0 auto;
+}
+
+.errors-list {
+  margin: 20px auto;
+  color: #840002;
+  font-size: 18px;
+}
+
+.santa-row {
+  display: flex;
+  flex-flow: row;
+  align-items: baseline;
+}
+
+.santa-editor input {
+  outline: none;
+  height: 30px;
+  width: 250px;
+  border-radius: 5px;
+  border: 1px solid #a4bda4;
+  margin: 20px;
+  font-size: 20px;
+  color: #006500;
+  padding: 5px;
+}
+
+.santa-editor input.contact {
+  width: 400px;
+}
+
+.delete-icon {
+  cursor: pointer;
+}
+
+.btn {
+  display: block;
+  width: 300px;
+  height: 35px;
+  background: #7bca7e;
+  border: 1px solid #a4bda4;
+  border-radius: 5px;
+  margin: 20px auto;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.success-message {
+  margin: 20px auto;
+  font-size: 30px;
+  color: #186b18;
+}
+
