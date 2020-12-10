@@ -95,7 +95,10 @@ export default class SantasPicker extends React.Component {
                       <SantaEditor santa={santa}
                                    handleChange=
                                        {this.handleSantaChange.bind(this, index)}/>
-                      {index > 2 && <button onClick={this.deleteSanta.bind(this, index)} className="delete-icon">X</button>}
+                      <button onClick={this.deleteSanta.bind(this, index)}
+                              className={`delete-icon ${this.state.santas.length <= 3 ? 'hidden' : ''}`}>
+                        X
+                      </button>
                     </div>
                 })}
 
