@@ -23,7 +23,13 @@ var transporter = nodemailer.createTransport({
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build'),{ etag: false, lastModified: false, setHeaders: (res, path) => {
+    // No cache for index html otherwhise there's gonna be problems loading the scripts
+    if (path.indexOf('index.html') !== -1) {
+      res.set('Cache-Control', 'no-store')
+    }
+  } } ));
+app.set('etag', false)
 app.use(bodyParser.json());
 
 const CONTACT_TYPES = new Map([['email', 'EMAIL']]);
@@ -36,10 +42,6 @@ const CONTACT_TYPE_NOTIFIER = {
 };
 
 app.get('/', (req, res) => {
-  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-  res.header('Expires', '-1');
-  res.header('Pragma', 'no-cache');
-
   res.sendFile(path.join(__dirname, 'client/build') + '/index.html',
       { etag: false, lastModified: false });
 });
