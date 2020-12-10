@@ -83,6 +83,7 @@ export default class SantasPicker extends React.Component {
 
   render() {
     return <div className="santas-form">
+      <h1>Welcome to Secret Santa Picker</h1>
       {this.state.loading && <div className="loading-indicator"></div>}
       {this.state.errors && <ul className="errors-list">{this.state.errors.map((error, index) => <li key={index}>{error}</li>)}</ul>}
       {this.state.pickingFinished
