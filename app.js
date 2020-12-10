@@ -59,11 +59,21 @@ app.post('/api/pick-secret-santa', async (req, res, next) => {
 
   const promises = [];
 
-  for (let i = 0; i < options.length; i++) {
-    if (i === options.length - 1) {
-      promises.push(notifySecretSanta(options[i], options[0].nickname));
-    } else {
-      promises.push(notifySecretSanta(options[i], options[i+1].nickname));
+  if (options.length > 3) {
+    for (let i = 0; i < options.length; i++) {
+      if (i === options.length - 1) {
+        promises.push(notifySecretSanta(options[i], options[0].nickname));
+      } else {
+        promises.push(notifySecretSanta(options[i], options[i + 1].nickname));
+      }
+    }
+  } else {
+    const associatedIndexesArray = [0, 1, 2];
+
+    for(let i = 0; i < options.length; i++) {
+      const index = Math.floor(Math.random() * (associatedIndexesArray.length));
+      promises.push(notifySecretSanta(options[i], options[associatedIndexesArray[index]].nickname));
+      associatedIndexesArray.splice(index, 1);
     }
   }
 
