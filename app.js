@@ -40,7 +40,8 @@ app.get('/', (req, res) => {
   res.header('Expires', '-1');
   res.header('Pragma', 'no-cache');
 
-  res.sendFile(path.join(__dirname, 'client/build') + '/index.html');
+  res.sendFile(path.join(__dirname, 'client/build') + '/index.html',
+      { etag: false, lastModified: false });
 });
 
 app.post('/api/pick-secret-santa', async (req, res, next) => {
