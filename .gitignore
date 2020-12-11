@@ -4,4 +4,4 @@
 /client/build
 /client/node_modules
 /client/.eslintcache
-app.yaml
+env_variables.yaml
